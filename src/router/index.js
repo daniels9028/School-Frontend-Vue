@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Login from "../pages/auth/Login.vue";
 import Register from "../pages/auth/Register.vue";
-import AuthLayout from "../layouts/AuthLayout.vue";
+import AuthLayout from "../components/layouts/AuthLayout.vue";
 import Dashboard from "../pages/Dashboard.vue";
+import DashboardLayout from "../components/layouts/DashboardLayout.vue";
 
 const routes = [
   {
@@ -20,8 +21,13 @@ const routes = [
     ],
   },
   {
-    path: "/dashboard",
-    component: Dashboard,
+    component: DashboardLayout,
+    children: [
+      {
+        path: "/dashboard",
+        component: Dashboard,
+      },
+    ],
   },
 ];
 
